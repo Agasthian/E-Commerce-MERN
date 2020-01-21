@@ -12,7 +12,7 @@ const userSchema = new Schema(
       required: true,
       maxlength: 32
     },
-    emial: {
+    email: {
       type: String,
       trim: true,
       required: true,
