@@ -2,7 +2,7 @@ exports.userSignUpValidator = (req, res, next) => {
   req.check('name', 'Name is Required').notEmpty();
   req
     .check('email', 'Email must be between 3 and 32 character')
-    .matches(/.+\@.+\../)
+    .matches(/.+\@.+\..+/)
     .withMessage('Email must contain @')
     .isLength({
       min: 4,
@@ -14,11 +14,11 @@ exports.userSignUpValidator = (req, res, next) => {
     .isLength({ min: 6 })
     .withMessage('Password must contain atleast 6 characters')
     .matches(/\d/)
-    .withMessage('Password must contain one number');
+    .withMessage('Password must contain a number');
 
   const errors = req.validationErrors();
   if (errors) {
-    const firstError = error.map(error => error.msg)[0];
+    const firstError = errors.map(error => error.msg)[0];
     return res.status(400).json({ error: firstError });
   }
   next();
