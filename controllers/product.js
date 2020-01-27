@@ -21,6 +21,7 @@ exports.read = (req, res) => {
   return res.json(req.product);
 };
 
+//Create Product
 exports.create = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
@@ -73,6 +74,7 @@ exports.create = (req, res) => {
   });
 };
 
+//Remove Product
 exports.remove = (req, res) => {
   let product = req.product;
   product.remove((err, deletedProduct) => {
@@ -87,6 +89,7 @@ exports.remove = (req, res) => {
   });
 };
 
+//Update Product
 exports.update = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
@@ -114,7 +117,7 @@ exports.update = (req, res) => {
     }
 
     let product = req.product;
-    product = _.extend(product, fields);
+    product = _.extend(product, fields); //Extend method from lodash
 
     //1kb = 1000
     //1mb = 1000000
