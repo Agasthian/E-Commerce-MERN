@@ -28,7 +28,7 @@ router.delete(
   isAuth,
   remove
 );
-router.get('/categories/', list);
+router.get('/categories', list);
 
 router.param('userId', userById);
 router.param('categoryId', categoryById);
