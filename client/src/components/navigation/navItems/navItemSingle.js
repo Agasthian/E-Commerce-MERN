@@ -22,7 +22,6 @@ const StyledLink = styled(Link)`
 const NavItemSingle = ({ link, clicked }) => {
   return (
     <>
-      <StyledLink to='/'>Home</StyledLink>
       <StyledLink
         onClick={clicked}
         to={`${link

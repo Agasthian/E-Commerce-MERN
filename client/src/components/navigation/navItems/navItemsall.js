@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { animated, useTrail, config } from 'react-spring';
 
@@ -11,24 +10,8 @@ const StyledNav = styled.nav`
   justify-content: ${({ mobile }) => (mobile ? 'center' : 'flex-end')};
   flex: 1;
 `;
-const StyledLink = styled(Link)`
-    font-family: inherit;
-    text-decoration: none;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--text);
-    padding: 1rem 2rem;
-    font-size: 1.3rem;
-    transition: all 0.2s ease-out;
-    letter-spacing:1px;
 
-    &:hover {
-        color: var(--primary);
-      }
-}
-`;
-
-const LINKS = ['SignIn', 'SignOut'];
+const LINKS = ['Home', 'SignIn', 'SignUp'];
 
 const NavItems = ({ mobile, clicked }) => {
   //Animation

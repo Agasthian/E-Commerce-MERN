@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledLabel = styled.label`
   cursor: pointer;
@@ -27,10 +27,10 @@ const StyledLabel = styled.label`
   .bar {
     &:before,
     &:after {
-      content: "";
+      content: '';
       width: 50%;
       height: 15%;
-      background: var(--primary);
+      background: var(--color-primary);
       display: block;
       position: absolute;
       left: 0;
@@ -106,19 +106,19 @@ const StyledLabel = styled.label`
       }
     }
   }
-`
+`;
 
 const HamburgerToggler = ({ menuOpened, toggleChange }) => {
   return (
     <StyledLabel>
-      <input type="checkbox" checked={menuOpened} onChange={toggleChange} />
-      <div className="bar-wrapper">
-        <div className="bar top-bar" />
-        <div className="bar middle-bar" />
-        <div className="bar bottom-bar" />
+      <input type='checkbox' checked={menuOpened} onChange={toggleChange} />
+      <div className='bar-wrapper'>
+        <div className='bar top-bar' />
+        <div className='bar middle-bar' />
+        <div className='bar bottom-bar' />
       </div>
     </StyledLabel>
-  )
-}
+  );
+};
 
-export default HamburgerToggler
+export default HamburgerToggler;
