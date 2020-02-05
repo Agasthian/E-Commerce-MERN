@@ -56,7 +56,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  padding: 6rem 0rem 0rem 0rem;
+  padding: 8rem 0rem 0rem 0rem;
   color: var(--text);
   display: flex;
   width: 100%;

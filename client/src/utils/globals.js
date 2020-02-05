@@ -32,6 +32,7 @@ export default createGlobalStyle`
       --border-color: rgba(176, 190, 197, 0.5);
       --shadow-color: rgba(0, 0, 0, 0.2);
       --shadow-color-dark: rgba(0, 0, 0, 0.25);
+      --background:${props => props.theme.colors.background};
 
       @media ${props => props.theme.mediaQueries.largest} {
           font-size: 57.5%;
@@ -47,6 +48,7 @@ export default createGlobalStyle`
       font-weight: 400;
       line-height: 1.6;
     }
+    
 
     form,
     input,
