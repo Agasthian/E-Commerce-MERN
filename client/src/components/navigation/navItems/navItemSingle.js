@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { signout } from '../../../auth';
 
 const StyledLink = styled(Link)`
     font-family: inherit;
@@ -20,6 +22,7 @@ const StyledLink = styled(Link)`
 `;
 
 const NavItemSingle = ({ link, clicked }) => {
+  let history = useHistory();
   return (
     <>
       <StyledLink
@@ -30,6 +33,16 @@ const NavItemSingle = ({ link, clicked }) => {
           .toLowerCase()}`}
       >
         {link}
+      </StyledLink>
+      <StyledLink
+        onClick={() =>
+          signout(() => {
+            history.push('/');
+          })
+        }
+        to='/'
+      >
+        Signout
       </StyledLink>
     </>
   );

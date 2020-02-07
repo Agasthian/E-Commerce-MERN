@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { animated, useTrail, config } from 'react-spring';
+import { Link, useHistory } from 'react-router-dom';
+
+import { signout, isAuthenticated } from '../../../auth';
 
 import NavItemSingle from './navItemSingle';
 
@@ -11,9 +14,25 @@ const StyledNav = styled.nav`
   flex: 1;
 `;
 
-const LINKS = ['Home', 'SignIn', 'SignOut'];
+const StyledLink = styled(Link)`
+    font-family: inherit;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text);
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    transition: all 0.2s ease-out;
+    letter-spacing:1px;
 
-const NavItems = ({ mobile, clicked }) => {
+    &:hover {
+        color: var(--primary);
+      }
+}
+`;
+const LINKS = ['Home', 'SignIn'];
+
+const NavItems = ({ mobile, clicked, history }) => {
   //Animation
   const navItemstrail = useTrail(LINKS.length, {
     config: config.wobbly,
@@ -30,18 +49,36 @@ const NavItems = ({ mobile, clicked }) => {
 
   return (
     <StyledNav mobile={mobile}>
-      {navItemstrail.map((propStyles, index) => (
+      {/* {navItemstrail.map((propStyles, index) => (
         <animated.div key={LINKS[index]} style={propStyles}>
-          {/* <StyledLink to='/'>Home</StyledLink>
-          <StyledLink to='/signin'>Sign In</StyledLink>
-          <StyledLink to='/signout'>Sign Out</StyledLink> */}
           <NavItemSingle
             key={LINKS[index]}
             link={LINKS[index]}
             clicked={clicked}
           />
         </animated.div>
-      ))}
+      ))} */}
+
+      <StyledLink onClick={clicked} to='/'>
+        Home
+      </StyledLink>
+      {!isAuthenticated() && (
+        <StyledLink onClick={clicked} to='/signin'>
+          Sign In
+        </StyledLink>
+      )}
+      {isAuthenticated() && (
+        <StyledLink
+          onClick={() =>
+            signout(() => {
+              history.push('/');
+            })
+          }
+          to='/'
+        >
+          Signout
+        </StyledLink>
+      )}
     </StyledNav>
   );
 };
