@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
-import { signin, authenticate } from '../../auth';
+import { signin, authenticate, isAuthenticated } from '../../auth';
 
 import './sign-in.styles.scss';
 
@@ -19,6 +19,7 @@ const SignIn = () => {
 
   //destructuring state
   const { email, password, error, loading, redirectToReferrer } = values;
+  const { user } = isAuthenticated();
 
   //Sign in form
   const signinForm = () => (
@@ -89,6 +90,13 @@ const SignIn = () => {
   //Redirect
   const redirectUser = () => {
     if (redirectToReferrer) {
+      if (user && user.role === 1) {
+        return <Redirect to='/admin/dashboard' />;
+      } else {
+        return <Redirect to='/user/dashboard' />;
+      }
+    }
+    if (isAuthenticated()) {
       return <Redirect to='/' />;
     }
   };

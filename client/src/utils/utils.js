@@ -74,6 +74,7 @@ export const PageHeading = styled.h2`
   text-transform: uppercase;
   color: var(--primary-blue);
   font-size: 3rem;
+  margin-bottom: 1rem;
 `;
 //Gallery
 export const GalleryHeading = styled.h3`

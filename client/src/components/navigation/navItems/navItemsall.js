@@ -32,7 +32,8 @@ const StyledLink = styled(Link)`
 `;
 const LINKS = ['Home', 'SignIn'];
 
-const NavItems = ({ mobile, clicked, history }) => {
+const NavItems = ({ mobile, clicked }) => {
+  let history = useHistory();
   //Animation
   const navItemstrail = useTrail(LINKS.length, {
     config: config.wobbly,
@@ -77,6 +78,16 @@ const NavItems = ({ mobile, clicked, history }) => {
           to='/'
         >
           Signout
+        </StyledLink>
+      )}
+      {isAuthenticated() && isAuthenticated().user.role === 0 && (
+        <StyledLink onClick={clicked} to='/user/dashboard'>
+          Dashboard
+        </StyledLink>
+      )}
+      {isAuthenticated() && isAuthenticated().user.role === 1 && (
+        <StyledLink onClick={clicked} to='/admin/dashboard'>
+          Dashboard
         </StyledLink>
       )}
     </StyledNav>
