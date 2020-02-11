@@ -9,7 +9,7 @@ import { PageHeading } from '../../utils/utils';
 
 const AdminDashboard = () => {
   const {
-    user: { _id, name, email, role }
+    user: { name, email, role }
   } = isAuthenticated();
 
   const adminLink = () => {
@@ -18,7 +18,7 @@ const AdminDashboard = () => {
         <h3 className='card-header'>User Links</h3>
         <ul className='list-group'>
           <li className='list-group-item'>
-            <Link className='nav-link' to='/create/catogory'>
+            <Link className='nav-link' to='/create/category'>
               Create Category
             </Link>
           </li>

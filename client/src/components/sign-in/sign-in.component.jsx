@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import FormInput from '../form-input/form-input.component';
+import { FormInput } from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import { signin, authenticate, isAuthenticated } from '../../auth';
 

@@ -69,6 +69,7 @@ export const BannerHeading = styled.h1`
   color: var(--primary-lighter);
   font-size: 4.5rem;
 `;
+
 // Page Heading
 export const PageHeading = styled.h2`
   text-transform: uppercase;
@@ -77,10 +78,7 @@ export const PageHeading = styled.h2`
   margin-bottom: 1rem;
 `;
 //Gallery
-export const GalleryHeading = styled.h3`
-  text-transform: uppercase;
-  color: var(--primary-blue);
-  font-size: 2.5rem;
-  margin-top: 2rem;
-  font-weight: 100;
+export const Center = styled.div`
+  display: grid;
+  place-items: center;
 `;

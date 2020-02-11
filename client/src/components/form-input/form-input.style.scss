@@ -9,7 +9,7 @@ $main-color: black;
 
 .group {
   position: relative;
-  margin: 45px 0;
+  margin: 40px 0;
 
   .form-input {
     background: none;
@@ -51,5 +51,17 @@ $main-color: black;
     &.shrink {
       @include shrinkLabel();
     }
+  }
+
+  .form-input-label-select,
+  .form-input-label-photo {
+    color: $sub-color;
+    font-size: 16px;
+    font-weight: normal;
+    margin-right: 2rem;
+  }
+  select {
+    font-size: 16px;
+    width: 22rem;
   }
 }

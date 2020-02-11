@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import FormInput from '../form-input/form-input.component';
+import { FormInput } from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import { isAuthenticated } from '../../auth';
 import { createCategory } from '../../api/apiAdmin';

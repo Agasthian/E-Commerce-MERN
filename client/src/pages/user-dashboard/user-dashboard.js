@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Layout from '../../components/layout/Layout';
 import { isAuthenticated } from '../../auth';
 
-import { DashboardWrapper, Greeting } from './user-dashboard.styles';
+import Layout from '../../components/layout/Layout';
 import { PageHeading } from '../../utils/utils';
+import { DashboardWrapper, Greeting } from './user-dashboard.styles';
 
 const Dashboard = () => {
   const {
-    user: { _id, name, email, role }
+    user: { name, email, role }
   } = isAuthenticated();
 
   const userLink = () => {
