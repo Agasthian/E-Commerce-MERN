@@ -8,6 +8,7 @@ import AdminDashboard from './pages/admin-dashboard/admin-dashboard.component';
 
 import Navbar from './components/navigation/navbar';
 import AddCategory from './components/add-category/add-category.components';
+import AddProduct from './components/add-product/add-product.components';
 
 import PrivateRoute from './auth/PrivateRoute';
 import AdminRoute from './auth/AdminRoute';
@@ -23,6 +24,7 @@ const Routes = () => {
         <PrivateRoute path='/user/dashboard' exact component={Dashboard} />
         <AdminRoute path='/admin/dashboard' exact component={AdminDashboard} />
         <AdminRoute path='/create/category' exact component={AddCategory} />
+        <AdminRoute path='/create/product' exact component={AddProduct} />
       </Switch>
     </Router>
   );
