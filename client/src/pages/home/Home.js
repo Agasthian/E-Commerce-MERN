@@ -4,6 +4,9 @@ import { getProducts } from '../../api/apiCore';
 import Layout from '../../components/layout/Layout';
 import Card from '../../components/product-card/card.components';
 
+import { PageHeading } from '../../utils/utils';
+import './home.styles.scss';
+
 const Home = () => {
   //State
   const [productsBySold, setProductsBySold] = useState([]);
@@ -39,22 +42,25 @@ const Home = () => {
 
   return (
     <Layout>
-      <h1>Home page</h1>
+      <PageHeading>Home page</PageHeading>
       <h3>New Arrival</h3>
-      <div className='row'>
-        {productsByArrival.map((product, i) => (
-          <Card key={i} product={product} />
-        ))}
+      <div className='card-preview'>
+        {productsByArrival
+          .filter((product, index) => index < 4)
+          .map((product, i) => (
+            <Card key={i} product={product} />
+          ))}
       </div>
       <hr />
 
       <h3>Best Seller</h3>
-      <div className='row'>
-        {productsBySold.map((product, i) => (
-          <Card key={i} product={product} />
-        ))}
+      <div className='card-preview'>
+        {productsBySold
+          .filter((product, index) => index < 4)
+          .map((product, i) => (
+            <Card key={i} product={product} />
+          ))}
       </div>
-      <hr />
     </Layout>
   );
 };

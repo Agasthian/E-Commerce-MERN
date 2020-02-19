@@ -5,6 +5,7 @@ import Home from './pages/home/Home';
 import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Dashboard from './pages/user-dashboard/user-dashboard';
 import AdminDashboard from './pages/admin-dashboard/admin-dashboard.component';
+import Shop from './pages/shop-page/Shop';
 
 import Navbar from './components/navigation/navbar';
 import AddCategory from './components/add-category/add-category.components';
@@ -20,6 +21,7 @@ const Routes = () => {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/home' exact component={Home} />
+        <Route path='/shop' exact component={Shop} />
         <Route path='/signin' exact component={SignInAndSignUp} />
         <PrivateRoute path='/user/dashboard' exact component={Dashboard} />
         <AdminRoute path='/admin/dashboard' exact component={AdminDashboard} />

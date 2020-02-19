@@ -63,6 +63,9 @@ const NavItems = ({ mobile, clicked }) => {
       <StyledLink onClick={clicked} to='/'>
         Home
       </StyledLink>
+      <StyledLink onClick={clicked} to='/shop'>
+        Shop
+      </StyledLink>
       {!isAuthenticated() && (
         <StyledLink onClick={clicked} to='/signin'>
           Sign In

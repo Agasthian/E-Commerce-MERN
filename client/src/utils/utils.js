@@ -23,29 +23,6 @@ export const SubHeading = styled.h3`
   margin-bottom: 1rem;
 `;
 
-export const Heading = styled.h4`
-  font-family: 'Neuton', serif;
-  font-size: 3.2rem;
-  color: var(--primary-blue);
-  font-weight: 400;
-  margin: 0px 0px 2rem 0px;
-`;
-// used by our Works
-export const SecondaryHeading = styled.h3`
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 4rem;
-  color: var(--primary-blue);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-`;
-// Footer
-export const SecondaryHeadingLight = styled.h5`
-  font-size: 1.6rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: var(--primary-lighter);
-`;
 // Layout
 export const Container = styled.div`
   max-width: 124rem;
@@ -56,7 +33,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  padding: 8rem 0rem 0rem 0rem;
+  padding: 12rem 0rem 0rem 0rem;
   color: var(--text);
   display: flex;
   width: 100%;
@@ -71,13 +48,13 @@ export const BannerHeading = styled.h1`
 `;
 
 // Page Heading
-export const PageHeading = styled.h2`
+export const PageHeading = styled.h1`
   text-transform: uppercase;
   color: var(--primary-blue);
   font-size: 3rem;
   margin-bottom: 1rem;
 `;
-//Gallery
+//Center-align
 export const Center = styled.div`
   display: grid;
   place-items: center;
