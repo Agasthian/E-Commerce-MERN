@@ -9,6 +9,9 @@ import './shop.styles.scss';
 
 const Shop = () => {
   //State
+  const [myFilters, setMyFilters] = useState({
+    filters: { category: [], price: [] }
+  });
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(false);
 
@@ -28,6 +31,15 @@ const Shop = () => {
     init();
   }, []);
 
+  //Handle Filter method -
+  const handleFilters = (filters, filterBy) => {
+    // console.log('Shop', filters, filterBy);
+
+    const newFilters = { ...myFilters };
+    newFilters.filters[filterBy] = filters;
+    setMyFilters(newFilters);
+  };
+
   return (
     <Layout>
       <PageHeading>Shop page</PageHeading>
@@ -35,10 +47,13 @@ const Shop = () => {
         <div className='sidebar'>
           <h4>Filter by categories</h4>
           <ul>
-            <CheckBox categories={categories} />
+            <CheckBox
+              categories={categories}
+              handleFilters={filters => handleFilters(filters, 'category')}
+            />
           </ul>
         </div>
-        <div className='products-wrapper'></div>
+        <div className='products-wrapper'>{JSON.stringify(myFilters)}</div>
       </div>
     </Layout>
   );

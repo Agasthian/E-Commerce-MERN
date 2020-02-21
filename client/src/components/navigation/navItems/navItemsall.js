@@ -71,6 +71,16 @@ const NavItems = ({ mobile, clicked }) => {
           Sign In
         </StyledLink>
       )}
+      {isAuthenticated() && isAuthenticated().user.role === 0 && (
+        <StyledLink onClick={clicked} to='/user/dashboard'>
+          Dashboard
+        </StyledLink>
+      )}
+      {isAuthenticated() && isAuthenticated().user.role === 1 && (
+        <StyledLink onClick={clicked} to='/admin/dashboard'>
+          Dashboard
+        </StyledLink>
+      )}
       {isAuthenticated() && (
         <StyledLink
           onClick={() =>
@@ -81,16 +91,6 @@ const NavItems = ({ mobile, clicked }) => {
           to='/'
         >
           Signout
-        </StyledLink>
-      )}
-      {isAuthenticated() && isAuthenticated().user.role === 0 && (
-        <StyledLink onClick={clicked} to='/user/dashboard'>
-          Dashboard
-        </StyledLink>
-      )}
-      {isAuthenticated() && isAuthenticated().user.role === 1 && (
-        <StyledLink onClick={clicked} to='/admin/dashboard'>
-          Dashboard
         </StyledLink>
       )}
     </StyledNav>

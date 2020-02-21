@@ -3,25 +3,25 @@ import { API } from '../config';
 /**
  * Fetch Products to display on Home Page
  */
-export const getProducts = sortBy => {
-  return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=6`, {
-    method: 'GET'
-  })
-    .then(response => {
-      return response.json();
-    })
-    .catch(err => console.log(err));
+export const getProducts = async sortBy => {
+  const res = await fetch(
+    `${API}/products?sortBy=${sortBy}&order=desc&limit=6`,
+    {
+      method: 'GET'
+    }
+  );
+  const json = await res.json();
+  return json;
 };
 
 /**
  * Fetch categories
  */
-export const getCategories = () => {
-  return fetch(`${API}/categories`, {
+
+export const getCategories = async () => {
+  const res = await fetch(`${API}/categories`, {
     method: 'GET'
-  })
-    .then(response => {
-      return response.json();
-    })
-    .catch(err => console.log(err));
+  });
+  const json = await res.json();
+  return json;
 };
