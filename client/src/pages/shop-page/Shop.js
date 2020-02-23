@@ -8,6 +8,7 @@ import Card from '../../components/product-card/card.components';
 import { prices } from '../../components/filter-price/fixedPrice';
 
 import { PageHeading } from '../../utils/utils';
+import { CardPreview } from '../home/home.styles';
 import './shop.styles.scss';
 
 const Shop = () => {
@@ -101,11 +102,11 @@ const Shop = () => {
         </div>
         <div className='products-wrapper'>
           <h2 className='mb-4'>Products</h2>
-          <div className='card-preview'>
+          <CardPreview>
             {filteredResults.map((product, i) => (
               <Card key={i} product={product} />
             ))}
-          </div>
+          </CardPreview>
         </div>
       </div>
     </Layout>

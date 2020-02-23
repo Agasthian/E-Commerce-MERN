@@ -5,7 +5,7 @@ import Layout from '../../components/layout/Layout';
 import Card from '../../components/product-card/card.components';
 
 import { PageHeading } from '../../utils/utils';
-import './home.styles.scss';
+import { CardPreview } from './home.styles';
 
 const Home = () => {
   //State
@@ -44,23 +44,23 @@ const Home = () => {
     <Layout>
       <PageHeading>Home page</PageHeading>
       <h3>New Arrival</h3>
-      <div className='card-preview'>
+      <CardPreview>
         {productsByArrival
           .filter((product, index) => index < 4)
           .map((product, i) => (
             <Card key={i} product={product} />
           ))}
-      </div>
+      </CardPreview>
       <hr />
 
       <h3>Best Seller</h3>
-      <div className='card-preview'>
+      <CardPreview>
         {productsBySold
           .filter((product, index) => index < 4)
           .map((product, i) => (
             <Card key={i} product={product} />
           ))}
-      </div>
+      </CardPreview>
     </Layout>
   );
 };

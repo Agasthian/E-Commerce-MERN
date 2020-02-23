@@ -1,23 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import DisplayImage from '../display-image/displayImage';
-import './card.styles.scss';
+import { CardWrapper, DetailsWrapper, Title, Price } from './card.styles';
 
 const Card = ({ product }) => {
   //Destructing
   const { name, description, price } = product;
 
   return (
-    <div className='card-item'>
-      <div className='image'>
-        <DisplayImage item={product} url='product' />
-      </div>
-      <div className='card-details'>
-        <div className='name'>{name}</div>
-        <div className='price'>Rs.{price}/-</div>
-      </div>
-    </div>
+    <CardWrapper to={'/'}>
+      <DisplayImage item={product} url='product' />
+      <DetailsWrapper>
+        <Title>{name}</Title>
+        <Price>Rs.{price}/-</Price>
+      </DetailsWrapper>
+    </CardWrapper>
   );
 };
 
