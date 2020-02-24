@@ -12,6 +12,7 @@ const Card = ({ product }) => {
       <DisplayImage item={product} url='product' />
       <DetailsWrapper>
         <Title>{name}</Title>
+        <Title>{description.substring(0, 100)}</Title>
         <Price>Rs.{price}/-</Price>
       </DetailsWrapper>
     </CardWrapper>
