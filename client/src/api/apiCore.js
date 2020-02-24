@@ -1,4 +1,5 @@
 import { API } from '../config';
+import queryString from 'query-string';
 
 /**
  * Fetch Products to display on Home Page
@@ -47,4 +48,17 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
     .catch(err => {
       console.log(err);
     });
+};
+
+/**
+ * Fetch Products from search bar on Home Page
+ */
+export const list = async params => {
+  const query = queryString.stringify(params);
+  console.log(query);
+  const res = await fetch(`${API}/products/search?${query}`, {
+    method: 'GET'
+  });
+  const json = await res.json();
+  return json;
 };

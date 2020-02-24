@@ -266,3 +266,31 @@ exports.photo = (req, res, next) => {
   }
   next();
 };
+
+/**
+ * List Search - for displaying results of search bar
+ */
+exports.listSearch = (req, res) => {
+  // create query object to hold search value and category value
+  const query = {};
+  //assign search value to query.name
+  // options = i is for case insentivity
+  //regular expression with mongoose we use regex - for patern matching string and query
+  if (req.query.search) {
+    query.name = { $regex: req.query.search, $options: 'i' };
+    //assign category value to query.category
+    if (req.query.category && req.query.category != 'All') {
+      query.category = req.query.category;
+    }
+    //find the product based on query object with 2 properties
+    //search and category
+    Product.find(query, (err, products) => {
+      if (err) {
+        return res.status(400).json({
+          error: errorHandler(err)
+        });
+      }
+      res.json(products);
+    }).select('-photo');
+  }
+};

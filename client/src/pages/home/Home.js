@@ -1,37 +1,29 @@
 import React, { useState, useEffect } from 'react';
 
 import { getProducts } from '../../api/apiCore';
+
 import Layout from '../../components/layout/Layout';
 import Card from '../../components/product-card/card.components';
+import SearchBar from '../../components/search-bar/searchBar';
 
 import { PageHeading } from '../../utils/utils';
-import { CardPreview } from './home.styles';
+import { CardPreview } from './Home.styles';
 
 const Home = () => {
   //State
   const [productsBySold, setProductsBySold] = useState([]);
   const [productsByArrival, setProductsByArrival] = useState([]);
-  const [error, setError] = useState(false);
 
   //Load Product by sold
-  const loadProductsBySold = () => {
-    getProducts('sold').then(data => {
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setProductsBySold(data);
-      }
-    });
+  const loadProductsBySold = async () => {
+    const data = await getProducts('sold');
+    setProductsBySold(data);
   };
+
   //Load Product by Arrival
-  const loadProductsByArrival = () => {
-    getProducts('createdAt').then(data => {
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setProductsByArrival(data);
-      }
-    });
+  const loadProductsByArrival = async () => {
+    const data = await getProducts('createdAt');
+    setProductsByArrival(data);
   };
 
   //Life cycle - use Effect
@@ -43,6 +35,7 @@ const Home = () => {
   return (
     <Layout>
       <PageHeading>Home page</PageHeading>
+      <SearchBar />
       <h3>New Arrival</h3>
       <CardPreview>
         {productsByArrival

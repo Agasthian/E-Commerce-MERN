@@ -8,8 +8,8 @@ import Card from '../../components/product-card/card.components';
 import { prices } from '../../components/filter-price/fixedPrice';
 
 import { PageHeading } from '../../utils/utils';
-import { CardPreview } from '../home/home.styles';
-import './shop.styles.scss';
+import { CardPreview } from '../home/Home.styles';
+import { ShopPageWrapper, SideBar, Products } from './Shop.styles';
 
 const Shop = () => {
   //State
@@ -17,48 +17,32 @@ const Shop = () => {
     filters: { category: [], price: [] }
   });
   const [categories, setCategories] = useState([]);
-  const [error, setError] = useState(false);
   const [limit, setLimit] = useState(6);
   const [skip, setSkip] = useState(0);
   const [size, setSize] = useState(0);
   const [filteredResults, setFilteredResults] = useState([]);
 
   //load categories and set data
-  const init = () => {
-    getCategories().then(data => {
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setCategories(data);
-      }
-    });
+  const init = async () => {
+    const data = await getCategories();
+    setCategories(data);
   };
 
   //Load Filtered Results method
-  const loadFilteredResults = newFilters => {
+  const loadFilteredResults = async newFilters => {
     // console.log(newFilters);
-    getFilteredProducts(skip, limit, newFilters).then(data => {
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setFilteredResults(data.data);
-        setSize(data.size);
-        setSkip(0);
-      }
-    });
+    const data = await getFilteredProducts(skip, limit, newFilters);
+    setFilteredResults(data.data);
+    setSize(data.size);
+    setSkip(0);
   };
   //Load more Filtered Results
-  const loadMore = () => {
+  const loadMore = async () => {
     let toSkip = skip + limit;
-    getFilteredProducts(toSkip, limit, myFilters.filters).then(data => {
-      if (data.error) {
-        setError(data.error);
-      } else {
-        setFilteredResults([...filteredResults, ...data.data]);
-        setSize(data.size);
-        setSkip(toSkip);
-      }
-    });
+    const data = await getFilteredProducts(toSkip, limit, myFilters.filters);
+    setFilteredResults([...filteredResults, ...data.data]);
+    setSize(data.size);
+    setSkip(toSkip);
   };
   //Load More button
   const loadMoreButton = () => {
@@ -110,8 +94,8 @@ const Shop = () => {
   return (
     <Layout>
       <PageHeading>Shop page</PageHeading>
-      <div className='shop-wrapper'>
-        <div className='sidebar'>
+      <ShopPageWrapper>
+        <SideBar>
           <h4>Filter by categories</h4>
           <ul>
             <CheckBox
@@ -126,8 +110,8 @@ const Shop = () => {
               handleFilters={filters => handleFilters(filters, 'price')}
             />
           </div>
-        </div>
-        <div className='products-wrapper'>
+        </SideBar>
+        <Products>
           <h2 className='mb-4'>Products</h2>
           <CardPreview>
             {filteredResults.map((product, i) => (
@@ -136,8 +120,8 @@ const Shop = () => {
           </CardPreview>
           <hr />
           {loadMoreButton()}
-        </div>
-      </div>
+        </Products>
+      </ShopPageWrapper>
     </Layout>
   );
 };
