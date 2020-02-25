@@ -6,6 +6,7 @@ import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.com
 import Dashboard from './pages/user-dashboard/user-dashboard';
 import AdminDashboard from './pages/admin-dashboard/admin-dashboard.component';
 import Shop from './pages/shop-page/Shop';
+import ProductPage from './pages/product-page/product-page.components';
 
 import Navbar from './components/navigation/navbar';
 import AddCategory from './components/add-category/add-category.components';
@@ -32,10 +33,11 @@ const App = () => {
           />
           <AdminRoute path='/create/category' exact component={AddCategory} />
           <AdminRoute path='/create/product' exact component={AddProduct} />
+          <Route path='/product/:productId' exact component={ProductPage} />
         </Switch>
       </Router>
     </div>
   );
-}; 
+};
 
 export default App;

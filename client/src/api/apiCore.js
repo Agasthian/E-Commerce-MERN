@@ -62,3 +62,25 @@ export const list = async params => {
   const json = await res.json();
   return json;
 };
+
+/**
+ * Fetch Single Product using product id and displayed on product Page
+ */
+
+export const read = productId => {
+  return fetch(`${API}/product/${productId}`, {
+    method: 'GET'
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// export const read = async productId => {
+//   const res = await fetch(`${API}/product/${productId}`, {
+//     method: 'GET'
+//   });
+//   const json = await res.json();
+//   return json;
+// };

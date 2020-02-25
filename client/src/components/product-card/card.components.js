@@ -5,10 +5,10 @@ import { CardWrapper, DetailsWrapper, Title, Price } from './card.styles';
 
 const Card = ({ product }) => {
   //Destructing
-  const { name, description, price } = product;
+  const { name, description, price, _id } = product;
 
   return (
-    <CardWrapper to={'/'}>
+    <CardWrapper to={`/product/${_id}`}>
       <DisplayImage item={product} url='product' />
       <DetailsWrapper>
         <Title>{name}</Title>
