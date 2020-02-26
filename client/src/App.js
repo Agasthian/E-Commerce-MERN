@@ -15,6 +15,47 @@ import AddProduct from './components/add-product/add-product.components';
 import PrivateRoute from './auth/PrivateRoute';
 import AdminRoute from './auth/AdminRoute';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import {
+  faArrowLeft,
+  faArrowRight,
+  faHome,
+  faCalendar,
+  faPoll,
+  faHeart,
+  faDotCircle,
+  faStar as fasFaStar,
+  faSearch,
+  faChevronRight,
+  faChevronLeft,
+  faLink,
+  faPlay,
+  faShoppingCart,
+  faBookmark
+} from '@fortawesome/free-solid-svg-icons';
+import { faStar as farFaStar } from '@fortawesome/free-regular-svg-icons';
+
+library.add(
+  fab,
+  faArrowLeft,
+  faArrowRight,
+  faHome,
+  faCalendar,
+  faPoll,
+  faHeart,
+  faDotCircle,
+  fasFaStar,
+  farFaStar,
+  faSearch,
+  faChevronRight,
+  faChevronLeft,
+  faLink,
+  faPlay,
+  faShoppingCart,
+  faBookmark
+);
+
 const App = () => {
   return (
     <div className='App'>

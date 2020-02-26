@@ -4,7 +4,6 @@ import { API } from '../../config';
 
 const CardImg = styled.img`
   width: 100%;
-  height: 30rem;
   object-fit: ${props => (props.error ? 'contain' : 'cover')};
   border-radius: 0.8rem;
   padding: ${props => (props.error ? '2rem' : '')};

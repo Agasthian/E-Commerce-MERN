@@ -77,10 +77,14 @@ export const read = productId => {
     .catch(err => console.log(err));
 };
 
-// export const read = async productId => {
-//   const res = await fetch(`${API}/product/${productId}`, {
-//     method: 'GET'
-//   });
-//   const json = await res.json();
-//   return json;
-// };
+/**
+ * Fetch related products
+ */
+
+export const listRelated = async productId => {
+  const res = await fetch(`${API}/products/related/${productId}`, {
+    method: 'GET'
+  });
+  const json = await res.json();
+  return json;
+};
