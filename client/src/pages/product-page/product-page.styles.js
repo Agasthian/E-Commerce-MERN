@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -186,7 +185,7 @@ export const LeftButtons = styled.div`
   }
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledText = styled.div`
   text-decoration: none;
   display: block;
   display: flex;

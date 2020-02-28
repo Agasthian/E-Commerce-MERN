@@ -7,10 +7,10 @@ export const CartDropdownWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: 1px solid black;
   background-color: white;
   top: 72px;
   right: 15%;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.12), 0 6px 6px 0 rgba(0, 0, 0, 0.24);
   z-index: 5;
 `;
 export const CartItems = styled.div`

@@ -37,6 +37,7 @@ const Home = () => {
       <PageHeading>Home page</PageHeading>
       <SearchBar />
       <h3>New Arrival</h3>
+      <hr />
       <CardPreview>
         {productsByArrival
           .filter((product, index) => index < 4)
@@ -44,9 +45,9 @@ const Home = () => {
             <Card key={i} product={product} />
           ))}
       </CardPreview>
-      <hr />
 
       <h3>Best Seller</h3>
+      <hr />
       <CardPreview>
         {productsBySold
           .filter((product, index) => index < 4)

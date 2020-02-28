@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -13,6 +14,7 @@ import Button from '../../components/button/button';
 import NotFound from '../../components/not-found/notFound';
 import BreadCrumbs from '../../components/bread-crumbs/breadcrumbs';
 import Card from '../../components/product-card/card.components';
+import AddToCartBtn from '../../components/add-to-cart-button/add-to-cart-button';
 import { Container } from '../../utils/utils';
 
 import {
@@ -27,7 +29,7 @@ import {
   RatingNumber,
   ImgLoading,
   Info,
-  StyledLink,
+  StyledText,
   Text,
   ButtonsWrapper,
   LeftButtons,
@@ -35,7 +37,7 @@ import {
 } from './product-page.styles';
 import { CardPreview } from '../home/Home.styles';
 
-const ProductPage = props => {
+const ProductPage = (props, addItem) => {
   //State
   const [product, setProduct] = useState({});
   const [relatedProduct, setRelatedProduct] = useState([]);
@@ -121,24 +123,24 @@ const ProductPage = props => {
                 <Info>Location : Adyar</Info>
               </DetailsWrapper>
               <Heading>Category</Heading>
-              <StyledLink>
+              <StyledText>
                 <FontAwesomeIcon
                   icon='dot-circle'
                   size='1x'
                   style={{ marginRight: '5px' }}
                 />
                 {category}
-              </StyledLink>
+              </StyledText>
               <hr />
               <Heading>Quantity</Heading>
-              <StyledLink>
+              <StyledText>
                 <FontAwesomeIcon
                   icon='dot-circle'
                   size='1x'
                   style={{ marginRight: '5px' }}
                 />
                 {quantity}
-              </StyledLink>
+              </StyledText>
               {displayStock(quantity)}
               <hr />
               <Heading>Product Description</Heading>
@@ -152,8 +154,8 @@ const ProductPage = props => {
               <Text>Rs. {price}/-</Text>
               <ButtonsWrapper>
                 <LeftButtons>
-                  <Button title='Add to cart' icon='shopping-cart' to='/' />
                   <Button title='Save for later' icon='bookmark' to='/' />
+                  <AddToCartBtn product={product} />
                 </LeftButtons>
               </ButtonsWrapper>
             </ProductDetails>
