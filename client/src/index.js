@@ -2,16 +2,12 @@ import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import reduxThunk from 'redux-thunk';
 
+import store from './redux/store';
 import { ThemeProvider } from 'styled-components';
 import theme from './utils/theme';
 import GlobalStyle from './utils/globals';
 import App from './App';
-import reducers from './reducers';
-
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <Provider store={store}>

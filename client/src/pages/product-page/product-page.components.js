@@ -49,11 +49,11 @@ const ProductPage = props => {
   const loadSingleProduct = async productId => {
     const data = await read(productId);
     setProduct(data);
-    setLoaded(true);
 
     //fetch related products
     const relatedData = await listRelated(data._id);
     setRelatedProduct(relatedData);
+    setLoaded(true);
   };
 
   //useEffect
@@ -76,15 +76,18 @@ const ProductPage = props => {
   const renderRecommended = relatedProduct => {
     return (
       <>
-        {relatedProduct.map((product, i) => (
-          <CardPreview>
-            <Card key={i} product={product} />
-          </CardPreview>
-        ))}
-        <NotFound
-          title='Sorry!'
-          subtitle={`There are no recommended products...`}
-        />
+        {!loaded ? (
+          <NotFound
+            title='Sorry!'
+            subtitle={`There are no recommended products...`}
+          />
+        ) : (
+          <>
+            {relatedProduct.map((product, i) => (
+              <Card key={i} product={product} />
+            ))}
+          </>
+        )}
       </>
     );
   };
@@ -156,7 +159,7 @@ const ProductPage = props => {
             </ProductDetails>
           </ProductWrapper>
           <Header title='Recommended' subtitle='products' />
-          {renderRecommended(relatedProduct)}
+          <CardPreview>{renderRecommended(relatedProduct)}</CardPreview>
         </Wrapper>
       </Container>
     </>

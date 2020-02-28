@@ -1,9 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { animated, useTrail, config } from 'react-spring';
 import { Link, useHistory } from 'react-router-dom';
 
 import { signout, isAuthenticated } from '../../../auth';
+import CartIcon from '../../cart-icon/cart-icon';
+import CartDropdown from '../../cart-dropdow/cart-dropdown';
 
 import NavItemSingle from './navItemSingle';
 
@@ -32,7 +35,7 @@ const StyledLink = styled(Link)`
 `;
 const LINKS = ['Home', 'SignIn'];
 
-const NavItems = ({ mobile, clicked }) => {
+const NavItems = ({ mobile, clicked, hidden }) => {
   let history = useHistory();
   //Animation
   const navItemstrail = useTrail(LINKS.length, {
@@ -49,8 +52,9 @@ const NavItems = ({ mobile, clicked }) => {
   });
 
   return (
-    <StyledNav mobile={mobile}>
-      {/* {navItemstrail.map((propStyles, index) => (
+    <>
+      <StyledNav mobile={mobile}>
+        {/* {navItemstrail.map((propStyles, index) => (
         <animated.div key={LINKS[index]} style={propStyles}>
           <NavItemSingle
             key={LINKS[index]}
@@ -60,41 +64,48 @@ const NavItems = ({ mobile, clicked }) => {
         </animated.div>
       ))} */}
 
-      <StyledLink onClick={clicked} to='/'>
-        Home
-      </StyledLink>
-      <StyledLink onClick={clicked} to='/shop'>
-        Shop
-      </StyledLink>
-      {!isAuthenticated() && (
-        <StyledLink onClick={clicked} to='/signin'>
-          Sign In
+        <StyledLink onClick={clicked} to='/'>
+          Home
         </StyledLink>
-      )}
-      {isAuthenticated() && isAuthenticated().user.role === 0 && (
-        <StyledLink onClick={clicked} to='/user/dashboard'>
-          Dashboard
+        <StyledLink onClick={clicked} to='/shop'>
+          Shop
         </StyledLink>
-      )}
-      {isAuthenticated() && isAuthenticated().user.role === 1 && (
-        <StyledLink onClick={clicked} to='/admin/dashboard'>
-          Dashboard
-        </StyledLink>
-      )}
-      {isAuthenticated() && (
-        <StyledLink
-          onClick={() =>
-            signout(() => {
-              history.push('/');
-            })
-          }
-          to='/'
-        >
-          Signout
-        </StyledLink>
-      )}
-    </StyledNav>
+        {!isAuthenticated() && (
+          <StyledLink onClick={clicked} to='/signin'>
+            Sign In
+          </StyledLink>
+        )}
+        {isAuthenticated() && isAuthenticated().user.role === 0 && (
+          <StyledLink onClick={clicked} to='/user/dashboard'>
+            Dashboard
+          </StyledLink>
+        )}
+        {isAuthenticated() && isAuthenticated().user.role === 1 && (
+          <StyledLink onClick={clicked} to='/admin/dashboard'>
+            Dashboard
+          </StyledLink>
+        )}
+        {isAuthenticated() && (
+          <StyledLink
+            onClick={() =>
+              signout(() => {
+                history.push('/');
+              })
+            }
+            to='/'
+          >
+            Signout
+          </StyledLink>
+        )}
+        <CartIcon />
+      </StyledNav>
+      {hidden ? null : <CartDropdown />}
+    </>
   );
 };
 
-export default NavItems;
+const mapStateToProps = ({ cart: { hidden } }) => ({
+  hidden
+});
+
+export default connect(mapStateToProps)(NavItems);
