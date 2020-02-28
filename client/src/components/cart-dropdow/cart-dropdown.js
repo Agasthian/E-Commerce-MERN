@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import CartItem from '../cart-item/cart.item';
 import Button from '../button/button';
 import {
   CartDropdownWrapper,
@@ -8,12 +10,16 @@ import {
   ButtonWrapper
 } from './cart-dropdown.styles';
 
-const CartDropdown = () => {
+const CartDropdown = ({ cartItems }) => {
   return (
     <>
       <CartDropdownWrapper>
-        <CartItems />
-        <EmptyCart>Your cart is Empty</EmptyCart>
+        <CartItems>
+          {cartItems.map(cartItem => (
+            <CartItem key={cartItem._id} item={cartItem} />
+          ))}
+        </CartItems>
+        {/* <EmptyCart>Your cart is Empty</EmptyCart> */}
         <ButtonWrapper>
           <Button title='Go to Checkout' icon='shopping-cart' to='/' />
         </ButtonWrapper>
@@ -22,4 +28,8 @@ const CartDropdown = () => {
   );
 };
 
-export default CartDropdown;
+const mapStateToProps = ({ cart: { cartItems } }) => ({
+  cartItems
+});
+
+export default connect(mapStateToProps)(CartDropdown);
