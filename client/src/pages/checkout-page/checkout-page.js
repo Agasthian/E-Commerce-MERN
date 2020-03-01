@@ -40,7 +40,7 @@ const CheckoutPage = ({ cartItems, total }) => {
           </HeaderBlock>
         </CheckoutHeader>
         {cartItems.map(cartItem => (
-          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+          <CheckoutItem key={cartItem._id} cartItem={cartItem} />
         ))}
         <Total>
           <span>Total : Rs.{total}/-</span>

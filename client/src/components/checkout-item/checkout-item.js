@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import DisplayImage from '../display-image/displayImage';
 import {
   clearItemFromCart,
   addItem,
@@ -10,7 +11,6 @@ import {
 import {
   CheckoutItemWrapper,
   ImageContainer,
-  Image,
   Text,
   Quantity,
   Value,
@@ -19,11 +19,11 @@ import {
 } from './checkout-item.styles';
 
 const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
-  const { name, price, purchaseQuantity, imageUrl } = cartItem;
+  const { name, price, purchaseQuantity } = cartItem;
   return (
     <CheckoutItemWrapper>
       <ImageContainer>
-        <Image src={imageUrl} alt='cart' />
+        <DisplayImage item={cartItem} url='product' />
       </ImageContainer>
       <Text>{name}</Text>
       <Quantity>
