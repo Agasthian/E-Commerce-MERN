@@ -4,9 +4,9 @@ import { getProducts } from '../../api/apiCore';
 
 import Layout from '../../components/layout/Layout';
 import Card from '../../components/product-card/card.components';
+import HomeLanding from '../../components/home-landing/home-landing';
 import SearchBar from '../../components/search-bar/searchBar';
 
-import { PageHeading } from '../../utils/utils';
 import { CardPreview } from './Home.styles';
 
 const Home = () => {
@@ -33,29 +33,31 @@ const Home = () => {
   }, []);
 
   return (
-    <Layout>
-      <PageHeading>Home page</PageHeading>
-      <SearchBar />
-      <h3>New Arrival</h3>
-      <hr />
-      <CardPreview>
-        {productsByArrival
-          .filter((product, index) => index < 4)
-          .map((product, i) => (
-            <Card key={i} product={product} />
-          ))}
-      </CardPreview>
+    <>
+      <HomeLanding />
+      <Layout>
+        <SearchBar />
+        <h3>New Arrival</h3>
+        <hr />
+        <CardPreview>
+          {productsByArrival
+            .filter((product, index) => index < 4)
+            .map((product, i) => (
+              <Card key={i} product={product} />
+            ))}
+        </CardPreview>
 
-      <h3>Best Seller</h3>
-      <hr />
-      <CardPreview>
-        {productsBySold
-          .filter((product, index) => index < 4)
-          .map((product, i) => (
-            <Card key={i} product={product} />
-          ))}
-      </CardPreview>
-    </Layout>
+        <h3>Best Seller</h3>
+        <hr />
+        <CardPreview>
+          {productsBySold
+            .filter((product, index) => index < 4)
+            .map((product, i) => (
+              <Card key={i} product={product} />
+            ))}
+        </CardPreview>
+      </Layout>
+    </>
   );
 };
 

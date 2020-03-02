@@ -1,103 +1,100 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { animated, useTrail, config } from 'react-spring';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { Link, useHistory } from 'react-router-dom';
 
+import NavbarLogo from '../../ui/navbarLogo';
 import { signout, isAuthenticated } from '../../../auth';
 import CartIcon from '../../cart-icon/cart-icon';
 import CartDropdown from '../../cart-dropdow/cart-dropdown';
 
-import NavItemSingle from './navItemSingle';
-
 const StyledNav = styled.nav`
   display: flex;
   flex-direction: ${({ mobile }) => (mobile ? 'column' : 'row')};
-  justify-content: ${({ mobile }) => (mobile ? 'center' : 'flex-end')};
+  justify-content: ${({ mobile }) => (mobile ? 'center' : 'space-between')};
   flex: 1;
 `;
 
 const StyledLink = styled(Link)`
-    font-family: inherit;
+    font-family: Open Sans;
     text-decoration: none;
-    font-weight: 800;
-    text-transform: uppercase;
+    font-weight:400;
     color: var(--text);
     padding: 1rem 2rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     transition: all 0.2s ease-out;
     letter-spacing:1px;
 
     &:hover {
-        color: var(--primary);
+        color: var(--text);
+        text-decoration:none;
       }
 }
 `;
-const LINKS = ['Home', 'SignIn'];
-
+const MenuEnd = styled.div`
+  display: flex;
+`;
+const MenuStart = styled.div`
+  display: flex;
+`;
 const NavItems = ({ mobile, clicked, hidden }) => {
   let history = useHistory();
-  //Animation
-  const navItemstrail = useTrail(LINKS.length, {
-    config: config.wobbly,
-    opacity: 1,
-    delay: 300,
-    transform: 'translateY(0px)',
-    from: {
-      opacity: 0,
-      transform: 'translateY(20px)',
-      display: 'flex',
-      cursor: 'pointer'
-    }
-  });
 
   return (
     <>
       <StyledNav mobile={mobile}>
-        {/* {navItemstrail.map((propStyles, index) => (
-        <animated.div key={LINKS[index]} style={propStyles}>
-          <NavItemSingle
-            key={LINKS[index]}
-            link={LINKS[index]}
-            clicked={clicked}
-          />
-        </animated.div>
-      ))} */}
+        <MenuStart>
+          <StyledLink>
+            <FontAwesomeIcon
+              icon='phone-alt'
+              size='1x'
+              style={{ marginRight: '5px' }}
+            />
+            (7840)559-7449
+          </StyledLink>
+          <StyledLink>
+            <FontAwesomeIcon
+              icon='map-marker-alt'
+              size='1x'
+              style={{ marginRight: '5px' }}
+            />
+            Store Location
+          </StyledLink>
+        </MenuStart>
+        <NavbarLogo />
+        <MenuEnd>
+          {isAuthenticated() && isAuthenticated().user.role === 0 && (
+            <StyledLink onClick={clicked} to='/user/dashboard'>
+              <FontAwesomeIcon icon='user-circle' size='2x' />
+            </StyledLink>
+          )}
+          {isAuthenticated() && isAuthenticated().user.role === 1 && (
+            <StyledLink onClick={clicked} to='/admin/dashboard'>
+              <FontAwesomeIcon icon='user-circle' size='2x' />
+            </StyledLink>
+          )}
 
-        <StyledLink onClick={clicked} to='/'>
-          Home
-        </StyledLink>
-        <StyledLink onClick={clicked} to='/shop'>
-          Shop
-        </StyledLink>
-        {!isAuthenticated() && (
-          <StyledLink onClick={clicked} to='/signin'>
-            Sign In
-          </StyledLink>
-        )}
-        {isAuthenticated() && isAuthenticated().user.role === 0 && (
-          <StyledLink onClick={clicked} to='/user/dashboard'>
-            Dashboard
-          </StyledLink>
-        )}
-        {isAuthenticated() && isAuthenticated().user.role === 1 && (
-          <StyledLink onClick={clicked} to='/admin/dashboard'>
-            Dashboard
-          </StyledLink>
-        )}
-        {isAuthenticated() && (
-          <StyledLink
-            onClick={() =>
-              signout(() => {
-                history.push('/');
-              })
-            }
-            to='/'
-          >
-            Signout
-          </StyledLink>
-        )}
-        <CartIcon />
+          <CartIcon />
+          {!isAuthenticated() && (
+            <StyledLink onClick={clicked} to='/signin'>
+              Sign In
+            </StyledLink>
+          )}
+          {isAuthenticated() && (
+            <StyledLink
+              onClick={() =>
+                signout(() => {
+                  history.push('/');
+                })
+              }
+              to='/'
+            >
+              Signout
+            </StyledLink>
+          )}
+        </MenuEnd>
       </StyledNav>
       {hidden ? null : <CartDropdown />}
     </>

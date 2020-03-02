@@ -33,7 +33,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  padding: 12rem 0rem 0rem 0rem;
+  padding: 17rem 0rem 0rem 0rem;
   color: var(--text);
   display: flex;
   width: 100%;

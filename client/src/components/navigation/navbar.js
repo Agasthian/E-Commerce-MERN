@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import NavbarLogo from '../ui/navbarLogo';
 import DesktopMenu from './desktopMenu';
+import SubMenu from './subMenu';
 import MobileMenu from './mobileMenu/mobileMenu';
 
 import { Container } from '../../utils/utils';
@@ -18,7 +19,7 @@ const StyledHeader = styled(animated.header)`
   background-color: var(--navbar);
   box-shadow: 0 0.5rem 2rem var(--shadow-color);
   transition: background 0.2s ease-out;
-  background-color: aliceblue;
+  background-color: #fff;
 `;
 
 const Wrapper = styled.div`
@@ -28,7 +29,21 @@ const Wrapper = styled.div`
   justify-content: space-between;
   transition: all 0.2s ease-out;
   user-select: none;
-  height: ${({ isMobile }) => (isMobile ? '6rem' : '7rem')};
+  height: ${({ isMobile }) => (isMobile ? '6rem' : '100%')};
+
+  @media ${props => props.theme.mediaQueries.large} {
+    height: 8rem;
+  }
+`;
+const SubMenuWrapper = styled.div`
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  justify-content: space-between;
+  transition: all 0.2s ease-out;
+  user-select: none;
+  height: ${({ isMobile }) => (isMobile ? '6rem' : '100%')};
 
   @media ${props => props.theme.mediaQueries.large} {
     height: 8rem;
@@ -43,7 +58,7 @@ const Navbar = ({ notOnePageSection }) => {
   const NavbarSpring = useSpring({
     config: config.wobbly,
     opacity: 1,
-    height: '7rem',
+    height: '12rem',
     from: { opactity: 0, height: '0rem' }
   });
 
@@ -66,17 +81,35 @@ const Navbar = ({ notOnePageSection }) => {
     <StyledHeader style={NavbarSpring}>
       <Container>
         <Wrapper>
-          <NavbarLogo />
           {isMobile ? (
-            <MobileMenu
-              notOnePageSection={notOnePageSection}
-              menuOpened={menuOpened}
-              setMenuOpened={setMenuOpened}
-            />
+            <>
+              <NavbarLogo />
+              <MobileMenu
+                notOnePageSection={notOnePageSection}
+                menuOpened={menuOpened}
+                setMenuOpened={setMenuOpened}
+              />
+            </>
           ) : (
-            <DesktopMenu />
+            <>
+              <DesktopMenu />
+            </>
           )}
         </Wrapper>
+        {isMobile ? (
+          <MobileMenu
+            notOnePageSection={notOnePageSection}
+            menuOpened={menuOpened}
+            setMenuOpened={setMenuOpened}
+          />
+        ) : (
+          <>
+            <hr />
+            <SubMenuWrapper>
+              <SubMenu />
+            </SubMenuWrapper>
+          </>
+        )}
       </Container>
     </StyledHeader>
   );

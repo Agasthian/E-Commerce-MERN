@@ -44,7 +44,8 @@ export default createGlobalStyle`
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
+      
+      font-family: 'Poppins' ;
       font-weight: 400;
       line-height: 1.6;
       font-size:1.3rem;

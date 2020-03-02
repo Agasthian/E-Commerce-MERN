@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import Layout from '../../components/layout/Layout';
 import CheckoutItem from '../../components/checkout-item/checkout-item';
+import BreadCrumbs from '../../components/bread-crumbs/breadcrumbs';
 
 import { selectCartItems } from '../../redux/cart/cart.selector';
 import { selectCartTotal } from '../../redux/cart/cart.selector';
 
+import { Container } from '../../utils/utils';
 import {
   CheckoutPageWrapper,
   CheckoutHeader,
@@ -19,34 +20,36 @@ import {
 
 const CheckoutPage = ({ cartItems, total }) => {
   return (
-    <Layout>
-      <h2>Checkoutpage</h2>
-      <CheckoutPageWrapper>
-        <CheckoutHeader>
-          <HeaderBlock>
-            <span>Product</span>
-          </HeaderBlock>
-          <HeaderBlock>
-            <span>Description</span>
-          </HeaderBlock>
-          <HeaderBlock>
-            <span>Quantity</span>
-          </HeaderBlock>
-          <HeaderBlock>
-            <span>Price</span>
-          </HeaderBlock>
-          <HeaderBlock>
-            <span>Remove</span>
-          </HeaderBlock>
-        </CheckoutHeader>
-        {cartItems.map(cartItem => (
-          <CheckoutItem key={cartItem._id} cartItem={cartItem} />
-        ))}
-        <Total>
-          <span>Total : Rs.{total}/-</span>
-        </Total>
-      </CheckoutPageWrapper>
-    </Layout>
+    <>
+      <BreadCrumbs name={'Checkoutpage'} currentPage={'Checkout'} />
+      <Container>
+        <CheckoutPageWrapper>
+          <CheckoutHeader>
+            <HeaderBlock>
+              <span>Product</span>
+            </HeaderBlock>
+            <HeaderBlock>
+              <span>Description</span>
+            </HeaderBlock>
+            <HeaderBlock>
+              <span>Quantity</span>
+            </HeaderBlock>
+            <HeaderBlock>
+              <span>Price</span>
+            </HeaderBlock>
+            <HeaderBlock>
+              <span>Remove</span>
+            </HeaderBlock>
+          </CheckoutHeader>
+          {cartItems.map(cartItem => (
+            <CheckoutItem key={cartItem._id} cartItem={cartItem} />
+          ))}
+          <Total>
+            <span>Total : Rs.{total}/-</span>
+          </Total>
+        </CheckoutPageWrapper>
+      </Container>
+    </>
   );
 };
 

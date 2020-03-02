@@ -9,7 +9,7 @@ import {
   BreadcrumbItemWrapper
 } from './breadcrumb.styles';
 
-const breadcrumbs = ({ url, name }) => {
+const breadcrumbs = ({ url, name, currentPage }) => {
   return (
     <div>
       <Breadcrumb>
@@ -26,7 +26,7 @@ const breadcrumbs = ({ url, name }) => {
                 Home >
               </BreadcrumbItem>
               <BreadcrumbItem to='/shop'>Shop ></BreadcrumbItem>
-              <BreadcrumbItem to={url}> Product</BreadcrumbItem>
+              <BreadcrumbItem to={url}> {currentPage}</BreadcrumbItem>
             </BreadcrumbItemWrapper>
           </BreadcrumbWrapper>
         </Container>

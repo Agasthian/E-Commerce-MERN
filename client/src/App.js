@@ -33,7 +33,10 @@ import {
   faLink,
   faPlay,
   faShoppingCart,
-  faBookmark
+  faBookmark,
+  faUserCircle,
+  faMapMarkerAlt,
+  faPhoneAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farFaStar } from '@fortawesome/free-regular-svg-icons';
 
@@ -54,7 +57,10 @@ library.add(
   faLink,
   faPlay,
   faShoppingCart,
-  faBookmark
+  faBookmark,
+  faUserCircle,
+  faMapMarkerAlt,
+  faPhoneAlt
 );
 
 const App = () => {

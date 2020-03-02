@@ -8,7 +8,7 @@ import { read, listRelated } from '../../api/apiCore';
 import Header from '../../components/header/Header';
 import DisplayImage from '../../components/display-image/displayImage';
 import Rating from '../../components/rating/ratings';
-import Loader from '../../components/loader/loader';
+
 import Loading from '../../components/loading/loading';
 import Button from '../../components/button/button';
 import NotFound from '../../components/not-found/notFound';
@@ -96,7 +96,11 @@ const ProductPage = (props, addItem) => {
 
   return (
     <>
-      <BreadCrumbs url={`/product/${currentURL}`} name={name} />
+      <BreadCrumbs
+        url={`/product/${currentURL}`}
+        currentPage={'Product'}
+        name={name}
+      />
       <Container>
         <Wrapper>
           <Helmet>

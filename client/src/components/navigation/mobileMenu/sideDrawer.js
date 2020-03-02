@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "styled-components"
-import { animated } from "react-spring"
+import React from 'react';
+import styled from 'styled-components';
+import { animated } from 'react-spring';
 
-import NavItems from "../navItems/navItemsall"
+import NavItems from '../navItems/navItemMobile';
 
 const BackgroundWrapper = styled(animated.div)`
   position: fixed;
@@ -16,7 +16,7 @@ const BackgroundWrapper = styled(animated.div)`
   min-height: calc(var(--vh, 1vh) * 100);
   display: flex;
   transition: background 0.2s ease-out;
-`
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   width: 100%;
   margin-top: 6rem;
   padding: 2rem 1rem;
-`
+`;
 
 const SideDrawer = ({ setMenuOpened, ...rest }) => {
   return (
@@ -35,7 +35,7 @@ const SideDrawer = ({ setMenuOpened, ...rest }) => {
         <NavItems mobile clicked={() => setMenuOpened(false)} />
       </Wrapper>
     </BackgroundWrapper>
-  )
-}
+  );
+};
 
-export default SideDrawer
+export default SideDrawer;

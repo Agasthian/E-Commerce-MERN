@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 import { getCategories, getFilteredProducts } from '../../api/apiCore';
-import Layout from '../../components/layout/Layout';
 import CheckBox from '../../components/filter-check-box/check-box.components';
 import RadioButton from '../../components/filter-radio-button/radio-button.components';
 import Card from '../../components/product-card/card.components';
 import { prices } from '../../components/filter-price/fixedPrice';
+import BreadCrumbs from '../../components/bread-crumbs/breadcrumbs';
 
-import { PageHeading } from '../../utils/utils';
+import { Container } from '../../utils/utils';
 import { CardPreview } from '../home/Home.styles';
 import { ShopPageWrapper, SideBar, Products } from './Shop.styles';
 
@@ -30,7 +30,7 @@ const Shop = () => {
 
   //Load Filtered Results method
   const loadFilteredResults = async newFilters => {
-    // console.log(newFilters);
+    //console.log(newFilters);
     const data = await getFilteredProducts(skip, limit, newFilters);
     setFilteredResults(data.data);
     setSize(data.size);
@@ -92,37 +92,39 @@ const Shop = () => {
   };
 
   return (
-    <Layout>
-      <PageHeading>Shop page</PageHeading>
-      <ShopPageWrapper>
-        <SideBar>
-          <h4>Filter by categories</h4>
-          <ul>
-            <CheckBox
-              categories={categories}
-              handleFilters={filters => handleFilters(filters, 'category')}
-            />
-          </ul>
-          <h4>Filter by price range</h4>
-          <div>
-            <RadioButton
-              prices={prices}
-              handleFilters={filters => handleFilters(filters, 'price')}
-            />
-          </div>
-        </SideBar>
-        <Products>
-          <h2 className='mb-4'>Products</h2>
-          <CardPreview>
-            {filteredResults.map((product, i) => (
-              <Card key={i} product={product} />
-            ))}
-          </CardPreview>
-          <hr />
-          {loadMoreButton()}
-        </Products>
-      </ShopPageWrapper>
-    </Layout>
+    <>
+      <BreadCrumbs url={`/shop`} name={'Shop Page'} />
+      <Container>
+        <ShopPageWrapper>
+          <SideBar>
+            <h4>Filter by categories</h4>
+            <ul>
+              <CheckBox
+                categories={categories}
+                handleFilters={filters => handleFilters(filters, 'category')}
+              />
+            </ul>
+            <h4>Filter by price range</h4>
+            <div>
+              <RadioButton
+                prices={prices}
+                handleFilters={filters => handleFilters(filters, 'price')}
+              />
+            </div>
+          </SideBar>
+          <Products>
+            <h2 className='mb-4'>Products</h2>
+            <CardPreview>
+              {filteredResults.map((product, i) => (
+                <Card key={i} product={product} />
+              ))}
+            </CardPreview>
+            <hr />
+            {loadMoreButton()}
+          </Products>
+        </ShopPageWrapper>
+      </Container>
+    </>
   );
 };
 

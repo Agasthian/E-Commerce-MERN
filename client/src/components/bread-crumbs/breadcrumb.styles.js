@@ -5,7 +5,7 @@ export const Breadcrumb = styled.div`
   background-color: #f5f5f5;
   height: 10rem;
   width: 100%;
-  margin-top: 7rem;
+  margin-top: 12rem;
 `;
 export const BreadcrumbWrapper = styled.div`
   display: flex;
