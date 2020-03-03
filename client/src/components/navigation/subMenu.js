@@ -9,13 +9,19 @@ const StyledNav = styled.nav`
   flex-direction: ${({ mobile }) => (mobile ? 'column' : 'row')};
   justify-content: ${({ mobile }) => (mobile ? 'center' : 'space-between')};
   flex: 1;
+  flex-wrap: wrap;
 `;
-const StyledLinkWrapper = styled.div``;
+const StyledLinkWrapper = styled.div`
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
 const StyledLink = styled(Link)`
     font-family: inherit;
     text-decoration: none;
     color: var(--text);
-    padding: 0.5rem 2rem;
+    
     font-size: 1.4rem;
     font-weight:700;
     transition: all 0.2s ease-out;

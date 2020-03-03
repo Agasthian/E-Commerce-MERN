@@ -15,6 +15,7 @@ const StyledNav = styled.nav`
   flex-direction: ${({ mobile }) => (mobile ? 'column' : 'row')};
   justify-content: ${({ mobile }) => (mobile ? 'center' : 'space-between')};
   flex: 1;
+  margin-top: 1rem;
 `;
 
 const StyledLink = styled(Link)`

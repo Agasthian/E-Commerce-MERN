@@ -6,7 +6,7 @@ const theme = {
     lighter: '#b0bec5',
     text: '#fafafa',
     link: '#444444',
-    hover: '#f5d372',
+    button: '#FF6F5E',
     background: '#fff'
   },
   size: {

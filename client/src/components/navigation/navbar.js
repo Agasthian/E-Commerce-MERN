@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   height: ${({ isMobile }) => (isMobile ? '6rem' : '100%')};
 
   @media ${props => props.theme.mediaQueries.large} {
-    height: 8rem;
+    height: 5rem;
   }
 `;
 const SubMenuWrapper = styled.div`
@@ -46,7 +46,7 @@ const SubMenuWrapper = styled.div`
   height: ${({ isMobile }) => (isMobile ? '6rem' : '100%')};
 
   @media ${props => props.theme.mediaQueries.large} {
-    height: 8rem;
+    height: 4rem;
   }
 `;
 

@@ -15,15 +15,11 @@ const StyledButton = styled.button`
   font-size: 1.3rem;
   width: auto;
   flex-grow: 0;
-  color: ${props =>
-    props.solid ? 'var(--text-color)' : 'var(--color-primary-dark)'};
-  border: ${props =>
-    props.solid
-      ? '1px solid transparent'
-      : '1px solid var(--color-primary-dark)'};
+  color: ${props => (props.solid ? 'var(--text-color)' : '#F7F8F3')};
+  border: ${props => (props.solid ? '1px solid transparent' : '#FF6F5E')};
   background-color: ${props =>
-    props.solid ? 'var(--color-primary-dark)' : 'transparent'};
-  border-radius: 5rem;
+    props.solid ? 'var(--color-primary-dark)' : ' #FF6F5E'};
+
   box-shadow: ${props =>
     props.solid ? '0 1rem 5rem var(--shadow-color)' : 'none'};
   transition: all 600ms cubic-bezier(0.075, 0.82, 0.165, 1);

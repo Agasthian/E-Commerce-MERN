@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import { getProducts } from '../../api/apiCore';
 
-import Layout from '../../components/layout/Layout';
 import Card from '../../components/product-card/card.components';
 import HomeLanding from '../../components/home-landing/home-landing';
 import SearchBar from '../../components/search-bar/searchBar';
 
+import { Container, Wrapper } from '../../utils/utils';
 import { CardPreview } from './Home.styles';
 
 const Home = () => {
@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <>
       <HomeLanding />
-      <Layout>
+      <Container>
         <SearchBar />
         <h3>New Arrival</h3>
         <hr />
@@ -56,7 +56,7 @@ const Home = () => {
               <Card key={i} product={product} />
             ))}
         </CardPreview>
-      </Layout>
+      </Container>
     </>
   );
 };

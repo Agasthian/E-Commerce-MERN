@@ -4,6 +4,7 @@ import { getCategories, list } from '../../api/apiCore';
 import Card from '../product-card/card.components';
 
 import { CardPreview } from '../../pages/home/Home.styles';
+import { SearchBarWrapper } from './searchBar.styles';
 
 const SearchBar = () => {
   //State
@@ -54,31 +55,33 @@ const SearchBar = () => {
   };
   //Search Form
   const searchForm = () => (
-    <form onSubmit={searchSubmit}>
-      <span className='input-group-text'>
-        <div className='input-group input-group-lg'>
-          <div className='input-group-prepend'>
-            <select onChange={handleChange('category')} className='btn mr-3'>
-              <option value='All'>All</option>
-              {categories.map((c, i) => (
-                <option key={i} value={c._id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
+    <SearchBarWrapper>
+      <form onSubmit={searchSubmit}>
+        <span className='input-group-text'>
+          <div className='input-group input-group-lg'>
+            <div className='input-group-prepend'>
+              <select onChange={handleChange('category')} className='btn mr-3'>
+                <option value='All'>All</option>
+                {categories.map((c, i) => (
+                  <option key={i} value={c._id}>
+                    {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <input
+              type='search'
+              className='form-control'
+              onChange={handleChange('search')}
+              placeholder='Search for products'
+            />
           </div>
-          <input
-            type='search'
-            className='form-control'
-            onChange={handleChange('search')}
-            placeholder='Search for products'
-          />
-        </div>
-        <div className='btn input-group-append' style={{ border: 'none' }}>
-          <button className='input-group-text'>Search</button>
-        </div>
-      </span>
-    </form>
+          <div className='btn input-group-append' style={{ border: 'none' }}>
+            <button className='input-group-text'>Search</button>
+          </div>
+        </span>
+      </form>
+    </SearchBarWrapper>
   );
 
   const searchedMessage = (searched, results) => {
