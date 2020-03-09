@@ -3,8 +3,9 @@ const theme = {
     main: '#37474f',
     dark: '#263238',
     light: '#546e7a',
-    lighter: '#b0bec5',
+    lighter: '#f7f8f3',
     text: '#fafafa',
+    textdark: '#25282a',
     link: '#444444',
     button: '#FF6F5E',
     background: '#fff'

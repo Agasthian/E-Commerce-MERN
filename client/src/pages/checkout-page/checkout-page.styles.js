@@ -26,15 +26,9 @@ export const HeaderBlock = styled.div`
 export const Total = styled.div`
   margin-top: 30px;
   margin-left: auto;
-  font-size: 36px;
+  font-size: 26px;
 `;
 export const Button = styled.div`
   margin-top: 50px;
   margin-left: auto;
-`;
-export const TestWarning = styled.div`
-  color: red;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 24px;
 `;

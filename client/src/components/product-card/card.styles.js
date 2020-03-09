@@ -5,14 +5,14 @@ export const CardWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  background-color: transparent;
-  border-radius: 0.8rem;
   transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
   position: relative;
   transition: all 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  background-color: var(--color-primary-lighter);
 
   &:hover {
     transform: scale(1.03);
+    text-decoration: none;
 
     ::after {
       transform: scaleY(1);
@@ -31,7 +31,7 @@ export const CardWrapper = styled(Link)`
     transform: scaleY(0);
     transform-origin: top;
     opacity: 0;
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
     z-index: -99;
     box-shadow: 0rem 2rem 5rem var(--shadow-color-dark);
     transition: all 100ms cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -51,18 +51,32 @@ export const DetailsWrapper = styled.div`
 
 export const Title = styled.h2`
   text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 1rem 4rem;
+  color: var(--color-primary-light);
+  background-color: #fff;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  transition: color 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  ${CardWrapper}:hover & {
+    color: #fff;
+    background-color: var(--color-primary-dark);
+    font-weight: 500;
+  }
+`;
+
+export const Description = styled.p`
+  text-align: center;
   font-size: 1.3rem;
   font-weight: 400;
   color: var(--color-primary-light);
   margin-bottom: 1rem;
   line-height: 1.4;
   transition: color 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-
-  ${CardWrapper}:hover & {
-    color: var(--text-color);
-  }
 `;
-
 export const Price = styled.div`
   display: flex;
   position: relative;
@@ -71,6 +85,7 @@ export const Price = styled.div`
   color: var(--color-primary);
 
   ${CardWrapper}:hover & {
-    color: var(--color-primary-lighter);
+    color: var(--color-primary-dark);
+    font-weight: 700;
   }
 `;

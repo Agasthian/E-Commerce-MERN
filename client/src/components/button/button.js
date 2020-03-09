@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StyledButton = styled.button`
   display: flex;
-  flex-direction: ${props => (props.left ? 'row' : 'row-reverse')};
-  align-items: center;
+  justify-content: center;
   text-decoration: none;
   outline: none;
   cursor: pointer;
@@ -56,7 +55,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ title, solid, icon, left, onClick }) => {
+const Button = ({ title, solid, icon, left, onClick, color }) => {
   return (
     <StyledButton left={left ? 1 : 0} solid={solid ? 1 : 0} onClick={onClick}>
       <FontAwesomeIcon

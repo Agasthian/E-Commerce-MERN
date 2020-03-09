@@ -6,7 +6,7 @@ import Card from '../../components/product-card/card.components';
 import HomeLanding from '../../components/home-landing/home-landing';
 import SearchBar from '../../components/search-bar/searchBar';
 
-import { Container, Wrapper } from '../../utils/utils';
+import { Container } from '../../utils/utils';
 import { CardPreview } from './Home.styles';
 
 const Home = () => {

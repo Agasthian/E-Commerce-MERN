@@ -1,24 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { Link } from 'react-router-dom';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item';
 import BreadCrumbs from '../../components/bread-crumbs/breadcrumbs';
+import Button from '../../components/button/button';
+import PayByRazorPay from '../../components/razorpay/razorpay';
+import { isAuthenticated } from '../../auth';
 
-import { selectCartItems } from '../../redux/cart/cart.selector';
-import { selectCartTotal } from '../../redux/cart/cart.selector';
+import {
+  selectCartItems,
+  selectCartTotal
+} from '../../redux/cart/cart.selector';
 
 import { Container } from '../../utils/utils';
 import {
   CheckoutPageWrapper,
   CheckoutHeader,
   HeaderBlock,
-  Total,
-  Button,
-  TestWarning
+  Total
 } from './checkout-page.styles';
 
 const CheckoutPage = ({ cartItems, total }) => {
+  //Show Check out button
+  const showCheckOut = () => {
+    return isAuthenticated() ? (
+      <PayByRazorPay />
+    ) : (
+      <Link to='/signin'>
+        <Button title='Sign in to checkout' />
+      </Link>
+    );
+  };
   return (
     <>
       <BreadCrumbs name={'Checkoutpage'} currentPage={'Checkout'} />
@@ -47,6 +61,7 @@ const CheckoutPage = ({ cartItems, total }) => {
           <Total>
             <span>Total : Rs.{total}/-</span>
           </Total>
+          {showCheckOut()}
         </CheckoutPageWrapper>
       </Container>
     </>

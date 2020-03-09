@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const HomeLandingWrapper = styled.div`
   min-height: 100vh;
-  background-color: #f7f8f3;
-  color: #000;
+  background-color: var(--color-primary-lighter);
+  color: var(--text-color-dark);
 `;
 
 export const FlexWrapper = styled.div`
@@ -37,7 +37,7 @@ export const SubHeading = styled.h4`
 export const ProductContent = styled.div`
   background-color: #fff;
   display: flex;
-  width: 50rem;
+  max-width: 50rem;
   box-shadow: 0 4px 10px var(--shadow-color);
 `;
 export const Catalog = styled.p`
@@ -55,7 +55,7 @@ export const Catalog = styled.p`
 
     width: 1px;
     height: 90px;
-    background-color: #25282a;
+    background-color: var(--text-color-dark);
     margin: 8px auto;
 `;
 

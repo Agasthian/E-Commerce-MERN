@@ -34,6 +34,22 @@ const StyledLink = styled(Link)`
       }
 }
 `;
+const StyledText = styled.p`
+    font-family: Open Sans;
+    text-decoration: none;
+    font-weight:400;
+    color: var(--text);
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    transition: all 0.2s ease-out;
+    letter-spacing:1px;
+
+    &:hover {
+        color: var(--text);
+        text-decoration:none;
+      }
+}
+`;
 const MenuEnd = styled.div`
   display: flex;
 `;
@@ -47,22 +63,22 @@ const NavItems = ({ mobile, clicked, hidden }) => {
     <>
       <StyledNav mobile={mobile}>
         <MenuStart>
-          <StyledLink>
+          <StyledText>
             <FontAwesomeIcon
               icon='phone-alt'
               size='1x'
               style={{ marginRight: '5px' }}
             />
             (7840)559-7449
-          </StyledLink>
-          <StyledLink>
+          </StyledText>
+          <StyledText>
             <FontAwesomeIcon
               icon='map-marker-alt'
               size='1x'
               style={{ marginRight: '5px' }}
             />
             Store Location
-          </StyledLink>
+          </StyledText>
         </MenuStart>
         <NavbarLogo />
         <MenuEnd>

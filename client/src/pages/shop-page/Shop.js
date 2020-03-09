@@ -9,7 +9,12 @@ import BreadCrumbs from '../../components/bread-crumbs/breadcrumbs';
 
 import { Container } from '../../utils/utils';
 import { CardPreview } from '../home/Home.styles';
-import { ShopPageWrapper, SideBar, Products } from './Shop.styles';
+import {
+  ShopPageWrapper,
+  SideBar,
+  Products,
+  SideBarHeading
+} from './Shop.styles';
 
 const Shop = () => {
   //State
@@ -97,6 +102,7 @@ const Shop = () => {
       <Container>
         <ShopPageWrapper>
           <SideBar>
+            <SideBarHeading>Filter</SideBarHeading>
             <h4>Filter by categories</h4>
             <ul>
               <CheckBox

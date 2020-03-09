@@ -27,6 +27,7 @@ export default createGlobalStyle`
       --color-primary-light: ${props => props.theme.colors.light};
       --color-primary-lighter: ${props => props.theme.colors.lighter};
       --text-color: ${props => props.theme.colors.text};
+      --text-color-dark: ${props => props.theme.colors.textdark};
       --link-color: ${props => props.theme.colors.link};
       --link-hover-button: ${props => props.theme.colors.button};
       --border-color: rgba(176, 190, 197, 0.5);

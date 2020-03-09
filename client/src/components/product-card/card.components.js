@@ -1,7 +1,14 @@
 import React from 'react';
 
+import AddToCartBtn from '../add-to-cart-button/add-to-cart-button';
 import DisplayImage from '../display-image/displayImage';
-import { CardWrapper, DetailsWrapper, Title, Price } from './card.styles';
+import {
+  CardWrapper,
+  DetailsWrapper,
+  Title,
+  Price,
+  Description
+} from './card.styles';
 
 const Card = ({ product }) => {
   //Destructing
@@ -12,9 +19,10 @@ const Card = ({ product }) => {
       <DisplayImage item={product} url='product' />
       <DetailsWrapper>
         <Title>{name}</Title>
-        <Title>{description.substring(0, 100)}</Title>
+        <Description>{description.substring(0, 25)}</Description>
         <Price>Rs.{price}/-</Price>
       </DetailsWrapper>
+      <AddToCartBtn product={product} />
     </CardWrapper>
   );
 };
